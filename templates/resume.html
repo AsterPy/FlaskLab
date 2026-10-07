@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- Hero / Intro Section with Photo -->
+    <section id="hero" class="mb-5 pb-5 border-bottom border-dark border-2">
+        <div class="row align-items-center g-4 g-lg-5">
+            <div class="col-12 col-md-5 col-lg-4 text-center text-md-start">
+                <div class="profile-image-wrapper d-inline-block">
+                    <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
+                         alt="Фото профілю" 
+                         class="img-fluid profile-image">
+                </div>
+            </div>
+            <div class="col-12 col-md-7 col-lg-8">
+                <span class="font-mono text-uppercase tracking-widest text-secondary d-block mb-2">Curriculum Vitae</span>
+                <h1 class="display-3 fw-bold hero-title text-black mb-3">Software Engineer</h1>
+                <p class="lead serif-body text-dark mb-4">
+                    Full-Stack Web Developer &amp; 3rd-year Software Engineering student passionate about crafting reliable, intelligent web solutions.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{{ url_for('contacts') }}" class="btn btn-dark rounded-0 px-4 py-2 text-uppercase font-mono text-sm tracking-wider">
+                        Зв'язатися &rarr;
+                    </a>
+                    <a href="#about" class="btn btn-outline-dark rounded-0 px-4 py-2 text-uppercase font-mono text-sm tracking-wider">
+                        Дізнатися більше
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Про себе (About Me) -->
+    <section id="about" class="resume-section mb-5 pb-5 border-bottom border-dark border-1">
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="section-label-box">
+                    <span class="font-mono text-uppercase text-secondary small d-block">01 // Огляд</span>
+                    <h2 class="section-title text-uppercase fw-bold">Про себе</h2>
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="card rounded-0 border-dark p-4 bg-white">
+                    <p class="serif-body fs-5 text-dark mb-0 leading-relaxed">
+                        I am a 3rd-year Software Engineering student interested in web development and modern technologies. 
+                        I create full-stack web applications and constantly improve my programming skills.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Освіта (Education) -->
+    <section id="education" class="resume-section mb-5 pb-5 border-bottom border-dark border-1">
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="section-label-box">
+                    <span class="font-mono text-uppercase text-secondary small d-block">02 // Академічний бекграунд</span>
+                    <h2 class="section-title text-uppercase fw-bold">Освіта</h2>
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="card rounded-0 border-dark p-4 bg-white">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-start mb-2">
+                        <h3 class="h4 fw-bold serif-heading mb-1 text-black">
+                            Vasyl Stefanyk Precarpathian National University
+                        </h3>
+                        <span class="badge rounded-0 bg-black text-white font-mono px-3 py-2 mt-2 mt-sm-0 align-self-start">
+                            3-й курс
+                        </span>
+                    </div>
+                    <p class="serif-body fs-5 text-secondary mb-0">
+                        3rd year, Software Engineering (Інженерія програмного забезпечення).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Навички (Skills) -->
+    <section id="skills" class="resume-section mb-5 pb-5 border-bottom border-dark border-1">
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="section-label-box">
+                    <span class="font-mono text-uppercase text-secondary small d-block">03 // Компетенції</span>
+                    <h2 class="section-title text-uppercase fw-bold">Навички</h2>
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="row g-3">
+                    {% set skills_list = [
+                        "Full-stack web development",
+                        "Front-end and back-end development",
+                        "Responsive web design",
+                        "API development",
+                        "Database management",
+                        "Git and GitHub",
+                        "AI integration"
+                    ] %}
+                    {% for skill in skills_list %}
+                    <div class="col-12 col-sm-6">
+                        <div class="skill-card p-3 border border-dark bg-white h-100 d-flex align-items-center">
+                            <span class="font-mono me-2 fw-bold text-black">&mdash;</span>
+                            <span class="serif-body fw-medium text-dark">{{ skill }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Технології (Technologies) -->
+    <section id="technologies" class="resume-section mb-5 pb-5 border-bottom border-dark border-1">
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="section-label-box">
+                    <span class="font-mono text-uppercase text-secondary small d-block">04 // Стек інструментів</span>
+                    <h2 class="section-title text-uppercase fw-bold">Технології</h2>
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="tech-grid d-flex flex-wrap gap-2">
+                    {% set tech_list = [
+                        "HTML", "CSS", "JavaScript", "TypeScript", 
+                        "React", "Next.js", "Python", "FastAPI", 
+                        "Flask", "Django", "Java", "Spring Boot", 
+                        "SQL", "Tailwind CSS", "Git", "Docker", 
+                        "AI tools and APIs"
+                    ] %}
+                    {% for tech in tech_list %}
+                    <div class="tech-tag border border-dark px-3 py-2 bg-white text-black font-mono">
+                        {{ tech }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Досвід роботи (Experience / Projects) -->
+    <section id="experience" class="resume-section mb-5">
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="section-label-box">
+                    <span class="font-mono text-uppercase text-secondary small d-block">05 // Практика &amp; Проєкти</span>
+                    <h2 class="section-title text-uppercase fw-bold">Досвід роботи</h2>
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="card rounded-0 border-dark p-4 bg-white mb-4">
+                    <h3 class="h4 fw-bold serif-heading text-black mb-3">Experience / Projects</h3>
+                    <p class="serif-body fs-5 text-dark mb-0 leading-relaxed">
+                        I have worked on educational, freelance, and personal web projects, developing both front-end and back-end parts. 
+                        I also integrate AI tools and APIs into web applications to add intelligent features.
+                    </p>
+                </div>
+                <div class="p-4 bg-black text-white rounded-0 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
+                    <div>
+                        <span class="font-mono text-uppercase text-secondary small d-block">Зацікавлені у співпраці?</span>
+                        <h4 class="mb-0 fw-bold serif-heading">Готовий до нових викликів та проєктів</h4>
+                    </div>
+                    <a href="{{ url_for('contacts') }}" class="btn btn-outline-light rounded-0 px-4 py-2 font-mono text-sm text-uppercase">
+                        Написати мені &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
