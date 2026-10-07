@@ -7,14 +7,14 @@ app = Flask(__name__)
 def resume():
     return render_template(
         "resume.html",
-        title="Резюме | Resume"
+        title="Resume"
     )
 
 @app.route("/contacts")
 def contacts():
     return render_template(
         "contacts.html",
-        title="Контакти | Contacts"
+        title="Contacts"
     )
 
 if __name__ == "__main__":

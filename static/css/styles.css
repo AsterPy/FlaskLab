@@ -1,49 +1,20 @@
-/* ==========================================================================
-   Minimalist Monochrome Design System
-   Pure Black & White, Editorial Serif Typography, 0px Border Radius
-   ========================================================================== */
-
 :root {
-    --bg-primary: #ffffff;
-    --text-primary: #000000;
-    --text-secondary: #525252;
-    --border-color: #000000;
-    --font-heading: 'Playfair Display', Georgia, serif;
-    --font-body: 'Source Serif 4', Georgia, serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-main: 'Montserrat', sans-serif;
 }
 
-/* Global Zero-Radius & Box Shadow Reset */
-*,
-*::before,
-*::after {
-    border-radius: 0 !important;
-    box-shadow: none !important;
+body,
+h1, h2, h3, h4, h5, h6,
+.btn,
+.form-control {
+    font-family: var(--font-main);
 }
 
 body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: var(--font-body);
     line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
 }
 
-/* Typography Helpers */
-h1, h2, h3, h4, h5, h6,
-.display-3, .display-4,
-.hero-title, .section-title, .serif-heading {
-    font-family: var(--font-heading);
-    color: var(--text-primary);
+h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
-}
-
-.serif-body {
-    font-family: var(--font-body);
-}
-
-.font-mono {
-    font-family: var(--font-mono);
 }
 
 .tracking-wider {
@@ -54,140 +25,14 @@ h1, h2, h3, h4, h5, h6,
     letter-spacing: 0.15em;
 }
 
-/* Header & Navigation */
-.site-header {
-    background-color: #ffffff;
-    z-index: 1030;
-}
-
-.navbar-brand {
-    font-family: var(--font-heading);
-    letter-spacing: 0.05em;
-}
-
 .nav-link {
-    font-family: var(--font-mono);
     font-size: 0.85rem;
-    color: var(--text-primary) !important;
-    position: relative;
-    transition: none;
-}
-
-.nav-link:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
-/* Buttons */
-.btn-dark {
-    background-color: #000000;
-    color: #ffffff;
-    border: 2px solid #000000;
-    transition: all 0.1s ease-in-out;
-}
-
-.btn-dark:hover,
-.btn-dark:focus {
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #000000;
-}
-
-.btn-outline-dark {
-    background-color: transparent;
-    color: #000000;
-    border: 2px solid #000000;
-    transition: all 0.1s ease-in-out;
-}
-
-.btn-outline-dark:hover,
-.btn-outline-dark:focus {
-    background-color: #000000;
-    color: #ffffff;
-    border-color: #000000;
-}
-
-/* Profile Image */
-.profile-image-wrapper {
-    border: 2px solid #000000;
-    padding: 6px;
-    background-color: #ffffff;
-}
-
-.profile-image {
-    max-width: 260px;
-    height: auto;
-    display: block;
-    filter: grayscale(100%);
-    transition: filter 0.2s ease, transform 0.2s ease;
-}
-
-.profile-image:hover {
-    filter: grayscale(0%);
-}
-
-/* Cards & Section Containers */
-.card {
-    border: 1px solid #000000;
-    background-color: #ffffff;
-}
-
-.section-label-box {
-    border-left: 3px solid #000000;
-    padding-left: 12px;
 }
 
 .section-title {
-    font-size: 1.75rem;
-    margin-top: 4px;
+    font-size: 1.5rem;
 }
 
-/* Skills & Tech */
-.skill-card {
-    transition: background-color 0.1s ease, color 0.1s ease;
-}
-
-.skill-card:hover {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-}
-
-.skill-card:hover span {
-    color: #ffffff !important;
-}
-
-.tech-tag {
-    font-size: 0.875rem;
-    transition: background-color 0.1s ease, color 0.1s ease;
-}
-
-.tech-tag:hover {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-/* Form Controls */
-.custom-input {
-    border: 2px solid #000000;
-    padding: 0.75rem 1rem;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    transition: border-width 0.1s ease;
-}
-
-.custom-input:focus {
-    border-color: #000000;
-    outline: none;
-    border-width: 3px;
-}
-
-.custom-input::placeholder {
-    color: #888888;
+.form-control::placeholder {
     font-style: italic;
-    font-family: var(--font-body);
-}
-
-/* Footer */
-.site-footer {
-    font-family: var(--font-mono);
 }

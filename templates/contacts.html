@@ -2,70 +2,64 @@
 
 {% block content %}
 <div class="container py-5">
-    <section class="contacts-section mb-5">
+    <section class="mb-5">
         <div class="row g-4 g-lg-5">
-            <!-- Left Column: Contact Information -->
             <div class="col-12 col-lg-5">
-                <span class="font-mono text-uppercase text-secondary small d-block mb-2">06 // Зворотний зв'язок</span>
-                <h1 class="display-4 fw-bold serif-heading text-black mb-4">Контакти</h1>
-                
-                <p class="serif-body fs-5 text-dark mb-4 leading-relaxed">
-                    Якщо у вас є пропозиції щодо співпраці, розробки веб-додатків або запитання — заповніть форму поруч або зв'яжіться безпосередньо.
+                <h1 class="display-4 fw-bold text-black mb-4">Contacts</h1>
+
+                <p class="fs-5 text-dark mb-4">
+                    If you have collaboration offers, web application development requests, or any questions, fill out the form or contact me directly.
                 </p>
 
                 <div class="border-top border-dark border-2 pt-4">
                     <div class="mb-3">
-                        <span class="font-mono text-uppercase text-secondary small d-block">Локація:</span>
-                        <span class="serif-body fs-6 text-black fw-bold">Івано-Франківськ, Україна</span>
+                        <span class="text-uppercase text-secondary small d-block">Location:</span>
+                        <span class="fs-6 text-black fw-bold">Ivano-Frankivsk, Ukraine</span>
                     </div>
                     <div class="mb-3">
-                        <span class="font-mono text-uppercase text-secondary small d-block">Університет:</span>
-                        <span class="serif-body fs-6 text-black">Прикарпатський національний університет імені Василя Стефаника</span>
+                        <span class="text-uppercase text-secondary small d-block">University:</span>
+                        <span class="fs-6 text-black">Vasyl Stefanyk Precarpathian National University</span>
                     </div>
                     <div class="mb-3">
-                        <span class="font-mono text-uppercase text-secondary small d-block">Спеціальність:</span>
-                        <span class="serif-body fs-6 text-black">121 Інженерія програмного забезпечення (3 курс)</span>
+                        <span class="text-uppercase text-secondary small d-block">Major:</span>
+                        <span class="fs-6 text-black">121 Software Engineering (3rd year)</span>
                     </div>
                     <div class="mb-3">
-                        <span class="font-mono text-uppercase text-secondary small d-block">GitHub:</span>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="serif-body fs-6 text-black text-decoration-none border-bottom border-dark">
+                        <span class="text-uppercase text-secondary small d-block">GitHub:</span>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="fs-6 text-black text-decoration-none border-bottom border-dark">
                             github.com
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column: HTML Form-Stub -->
             <div class="col-12 col-lg-7">
-                <div class="card rounded-0 border-dark border-2 p-4 p-md-5 bg-white">
-                    <h2 class="h3 fw-bold serif-heading text-black mb-3">Надіслати повідомлення</h2>
-                    <p class="font-mono text-secondary small mb-4">
-                        * Форма зворотного зв'язку (демонстраційна заглушка)
-                    </p>
+                <div class="card rounded-0 border-dark border-2 p-4 p-md-5">
+                    <h2 class="h3 fw-bold text-black mb-4">Send a Message</h2>
 
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Дякуємо! Ваше повідомлення надіслано (тестова форма-заглушка).');">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent (demo placeholder form).');">
                         <div class="mb-4">
-                            <label for="name" class="form-label font-mono text-uppercase small fw-bold">Ваше ім'я / Name</label>
-                            <input type="text" id="name" name="name" class="form-control rounded-0 border-dark custom-input" placeholder="Іван Франко" required>
+                            <label for="name" class="form-label text-uppercase small fw-bold">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control form-control-lg rounded-0 border-dark border-2 fs-6" placeholder="John Smith" required>
                         </div>
 
                         <div class="mb-4">
-                            <label for="email" class="form-label font-mono text-uppercase small fw-bold">Електронна пошта / Email</label>
-                            <input type="email" id="email" name="email" class="form-control rounded-0 border-dark custom-input" placeholder="example@domain.com" required>
+                            <label for="email" class="form-label text-uppercase small fw-bold">Email</label>
+                            <input type="email" id="email" name="email" class="form-control form-control-lg rounded-0 border-dark border-2 fs-6" placeholder="example@domain.com" required>
                         </div>
 
                         <div class="mb-4">
-                            <label for="subject" class="form-label font-mono text-uppercase small fw-bold">Тема / Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-control rounded-0 border-dark custom-input" placeholder="Пропозиція співпраці" required>
+                            <label for="subject" class="form-label text-uppercase small fw-bold">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control form-control-lg rounded-0 border-dark border-2 fs-6" placeholder="Collaboration proposal" required>
                         </div>
 
                         <div class="mb-4">
-                            <label for="message" class="form-label font-mono text-uppercase small fw-bold">Повідомлення / Message</label>
-                            <textarea id="message" name="message" rows="5" class="form-control rounded-0 border-dark custom-input" placeholder="Напишіть ваше повідомлення тут..." required></textarea>
+                            <label for="message" class="form-label text-uppercase small fw-bold">Message</label>
+                            <textarea id="message" name="message" rows="5" class="form-control form-control-lg rounded-0 border-dark border-2 fs-6" placeholder="Write your message here..." required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-dark rounded-0 w-100 py-3 text-uppercase font-mono tracking-widest fw-bold btn-submit">
-                            Надіслати повідомлення &rarr;
+                        <button type="submit" class="btn btn-dark border-2 rounded-0 w-100 py-3 text-uppercase tracking-widest fw-bold">
+                            Send Message &rarr;
                         </button>
                     </form>
                 </div>
