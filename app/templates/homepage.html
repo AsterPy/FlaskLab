@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <section class="mb-5 pb-5 border-bottom border-dark border-2">
+        <div class="row align-items-center g-4">
+            <div class="col-12 col-lg-8">
+                <span class="badge rounded-0 bg-black text-white text-uppercase tracking-wider px-3 py-2 mb-3">
+                    Home Page
+                </span>
+                <h1 class="display-4 fw-bold text-black mb-3">Welcome to My Website</h1>
+                <p class="lead text-dark mb-4">
+                    Personal portfolio and web application built with Flask using a modular package structure.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{{ url_for('resume') }}" class="btn btn-dark border-2 rounded-0 px-4 py-2 text-uppercase small tracking-wider">
+                        View Portfolio
+                    </a>
+                    <a href="{{ url_for('contacts') }}" class="btn btn-outline-dark border-2 rounded-0 px-4 py-2 text-uppercase small tracking-wider">
+                        Contacts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-4">
+        <div class="card rounded-0 border-dark border-2 p-4">
+            <h2 class="h5 text-uppercase fw-bold border-start border-dark border-3 ps-3 mb-3">
+                Client Information (User-Agent)
+            </h2>
+            <p class="mb-0 font-monospace small text-dark bg-light p-3 border border-dark">
+                {{ agent }}
+            </p>
+        </div>
+    </section>
+</div>
+{% endblock %}
