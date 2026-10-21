@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Greeting Page{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-12 col-md-4 col-lg-3">
+            <nav class="card rounded-0 border-dark border-2 p-3">
+                <span class="text-uppercase small fw-bold tracking-wider border-bottom border-dark pb-2 mb-2">
+                    Users Menu
+                </span>
+                <ul class="nav flex-column gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase tracking-wider fw-medium px-2 py-2 link-dark link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="{{ url_for('users.greetings', name='John', age=30) }}">Greet John</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase tracking-wider fw-medium px-2 py-2 link-dark link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="{{ url_for('users.admin') }}">Admin</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="col-12 col-md-8 col-lg-9">
+            <div class="card rounded-0 border-dark border-2 p-4 p-md-5 h-100">
+                <h2 class="display-5 fw-bold text-black mb-3">Hello, {{ name }}!</h2>
+                {% if age %}
+                    <p class="fs-4 text-dark mb-0">You are {{ age }} years old.</p>
+                {% else %}
+                    <p class="fs-4 text-secondary mb-0">Age is unknown.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
