@@ -2,7 +2,7 @@ from flask import request, redirect, url_for, render_template
 from . import users_bp
 
 
-@users_bp.route("/hi/<string:name>")  # /users/hi/ivan?age=45
+@users_bp.route("/hi/<string:name>")  
 def greetings(name):
     name = name.upper()
     age = request.args.get("age", None, int)
