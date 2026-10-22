@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="p-4 border rounded {% if theme == 'dark' %}bg-dark text-white border-secondary{% else %}bg-light text-dark border-dark{% endif %}">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+            <div>
+                <h2 class="mb-1">Профіль користувача</h2>
+                <p class="mb-0">Привіт, <strong>{{ username }}</strong>!</p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <a href="{{ url_for('users.set_theme', theme='light') }}" class="btn btn-sm {% if theme == 'light' %}btn-primary{% else %}btn-outline-light{% endif %}">Світла тема</a>
+                <a href="{{ url_for('users.set_theme', theme='dark') }}" class="btn btn-sm {% if theme == 'dark' %}btn-primary{% else %}btn-outline-dark{% endif %}">Темна тема</a>
+                <form action="{{ url_for('users.logout') }}" method="POST" class="d-inline ms-2">
+                    <button type="submit" class="btn {% if theme == 'dark' %}btn-outline-warning{% else %}btn-outline-dark{% endif %} btn-sm">Вийти</button>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row g-4 mt-1">
+            <div class="col-md-6">
+                <h5>Додати кукі</h5>
+                <form method="POST" action="{{ url_for('users.profile') }}">
+                    <input type="hidden" name="action" value="add">
+                    <div class="mb-2">
+                        <label class="form-label">Ключ</label>
+                        <input type="text" name="key" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Значення</label>
+                        <input type="text" name="value" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Термін дії (сек, необов'язково)</label>
+                        <input type="number" name="max_age" class="form-control form-control-sm" min="1">
+                    </div>
+                    <button type="submit" class="btn {% if theme == 'dark' %}btn-light{% else %}btn-dark{% endif %} btn-sm">Додати кукі</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h5>Видалити кукі</h5>
+                <form method="POST" action="{{ url_for('users.profile') }}" class="mb-3">
+                    <input type="hidden" name="action" value="delete">
+                    <div class="mb-2">
+                        <label class="form-label">Ключ кукі</label>
+                        <input type="text" name="key" class="form-control form-control-sm" required>
+                    </div>
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Видалити за ключем</button>
+                </form>
+
+                <form method="POST" action="{{ url_for('users.profile') }}">
+                    <input type="hidden" name="action" value="delete_all">
+                    <button type="submit" class="btn btn-danger btn-sm">Видалити всі кукі</button>
+                </form>
+            </div>
+        </div>
+
+        <hr class="my-4">
+
+        <h5>Поточні кукі</h5>
+        <table class="table table-bordered table-sm {% if theme == 'dark' %}table-dark{% endif %}">
+            <thead>
+                <tr>
+                    <th>Ключ</th>
+                    <th>Значення</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if cookies %}
+                    {% for key, value in cookies.items() %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ value }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="2" class="text-center">Немає збережених кукі</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -12,10 +12,19 @@
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-3">
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase tracking-wider fw-medium px-2 link-dark link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="{{ url_for('resume') }}">Portfolio</a>
+                        <a class="nav-link text-uppercase tracking-wider fw-medium px-2 link-dark link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="{{ url_for('home') }}">Homepage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase tracking-wider fw-medium px-2 link-dark link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="{{ url_for('home') }}">Homepage</a>
+                        <a class="nav-link text-uppercase tracking-wider fw-medium px-2 link-dark link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="{{ url_for('resume') }}">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase tracking-wider fw-medium px-2 link-dark link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="{{ url_for('products.all_products') }}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase tracking-wider fw-medium px-2 link-dark link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="{{ url_for('users.profile') }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase tracking-wider fw-medium px-2 link-dark link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="{{ url_for('users.login') }}">Login</a>
                     </li>
                     <li class="nav-item ms-lg-2">
                         <a class="btn btn-outline-dark border-2 rounded-0 px-3 py-1 text-uppercase tracking-wider fw-medium" href="{{ url_for('contacts') }}">Contacts</a>
