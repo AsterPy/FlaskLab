@@ -1,24 +1,80 @@
 {% extends 'base.html' %}
 
-{% block title %}Products Page{% endblock %}
+{% block title %}Products - Каталог товарів{% endblock %}
 
 {% block content %}
 <div class="container py-5">
-    <h1 class="display-5 fw-bold text-black mb-4">Products</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-5 fw-bold text-black mb-1">Каталог товарів</h1>
+            <p class="text-secondary mb-0">Керування товарами за допомогою Flask-WTF та TinyDB</p>
+        </div>
+        <a href="{{ url_for('products.add_product') }}" class="btn btn-dark border-2 rounded-0 px-4 py-2 text-uppercase fw-bold">
+            + Додати товар
+        </a>
+    </div>
+
     <div class="row g-4">
         {% for product in products %}
         <div class="col-12 col-md-6 col-lg-4">
-            <a  href="{{ url_for('products.get_product', product_id=product.id) }}" class="card rounded-0 border-dark border-2 p-4 h-100 d-flex flex-column justify-content-between">
+            <div class="card rounded-0 border-dark border-2 h-100 d-flex flex-column justify-content-between shadow-sm">
                 <div>
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <h3 class="h4 fw-bold text-black mb-0">{{ product.name }}</h3>
+                    {% if product.image %}
+                        <img src="{{ url_for('products.static', filename=product.image) }}" class="card-img-top rounded-0 border-bottom border-dark" alt="{{ product.name }}" style="height: 220px; object-fit: cover;">
+                    {% else %}
+                        <div class="bg-light d-flex align-items-center justify-content-center text-secondary border-bottom border-dark" style="height: 220px;">
+                            <span class="small text-uppercase fw-medium">Зображення відсутнє</span>
+                        </div>
+                    {% endif %}
+
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-baseline mb-2">
+                            <span class="badge bg-secondary rounded-0 text-uppercase">{{ product.category }}</span>
+                            <span class="fs-5 fw-bold text-black">{{ "%.2f"|format(product.price) }} грн</span>
+                        </div>
+
+                        <h3 class="h5 fw-bold text-black mb-2">
+                            <a href="{{ url_for('products.get_product', id=product.id) }}" class="text-decoration-none text-black">
+                                {{ product.name }}
+                            </a>
+                        </h3>
+
+                        <p class="text-secondary small mb-3">
+                            Кількість на складі: <strong>{{ product.quantity }} шт.</strong>
+                        </p>
+
+                        <p class="text-muted small mb-0">
+                            Створено: {{ product.created_at }}
+                        </p>
                     </div>
                 </div>
-               </a>
+
+                <div class="card-footer bg-white border-top border-dark border-1 p-3 d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('products.get_product', id=product.id) }}" class="btn btn-sm btn-outline-dark rounded-0 fw-medium">
+                        Детальніше
+                    </a>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url_for('products.edit_product', id=product.id) }}" class="btn btn-sm btn-outline-secondary rounded-0 fw-medium">
+                            Редагувати
+                        </a>
+                        <form action="{{ url_for('products.delete_product', id=product.id) }}" method="POST" onsubmit="return confirm('Ви впевнені, що хочете видалити товар «{{ product.name }}»?');" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-sm btn-outline-danger rounded-0 fw-medium">
+                                Видалити
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         {% else %}
         <div class="col-12">
-            <p class="text-secondary">Список порожній</p>
+            <div class="alert alert-light border border-dark rounded-0 p-5 text-center">
+                <p class="fs-5 text-secondary mb-3">Список товарів порожній.</p>
+                <a href="{{ url_for('products.add_product') }}" class="btn btn-dark rounded-0 px-4 py-2">
+                    Додати перший товар
+                </a>
+            </div>
         </div>
         {% endfor %}
     </div>
