@@ -37,7 +37,7 @@
 ### 2.5. Видалення товару (`POST /product/<id>/delete`)
 
 ![Підтвердження видалення товару](screenshots/product_delete_1.png)
-![Відображення підтвердження](screenshots/product_delete_1.png)
+![Відображення підтвердження](screenshots/product_delete_2.png)
 
 ---
 
