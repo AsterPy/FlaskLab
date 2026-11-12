@@ -1,46 +1,57 @@
-# Лабораторна робота №5 — WTF-форми та TinyDB
+# Лабораторна робота №6 — ORM. Вступ до SQLAlchemy. Операції CRUD
 
-## Завдання 1. Контактна форма (Flask-WTF)
+### 1. Робота з ORM у Flask Shell
 
-### 1.1. Відображення контактної форми (`/contact`)
-
-![Контактна форма](screenshots/contact_form.png)
-
-### 1.2. Валідація форми та виведення помилок через макрос
-
-![Помилки валідації контактної форми](screenshots/contact_errors.png)
-
-### 1.3. Успішна відправка форми та логування
-
-![Успішна відправка форми](screenshots/contact_success.png)
+![Команди у Flask Shell](screenshots/flask_shell.png)
 
 ---
 
-## Завдання 2. Блюпринт Products (CRUD, TinyDB, Flask-WTF)
+### 2. Виконання міграцій (Flask-Migrate / Alembic)
 
-### 2.1. Список товарів (`GET /product`)
+![Початкова міграція](screenshots/migration_init.png)
 
-![Список товарів](screenshots/products_list.png)
+#### 2.2. Оновлення моделі та повторна міграція (`add is_active, author`)
 
-### 2.2. Детальна сторінка товару (`GET /product/<id>`)
+![Оновлення моделі та повторна міграція](screenshots/migration_update.png)
 
-![Детальна сторінка товару](screenshots/product_detail.png)
+#### 2.3. Структура створеної бази даних (`instance/data.sqlite`)
 
-### 2.3. Додавання товару (`GET/POST /product/add`)
-
-![Додавання товару](screenshots/product_add.png)
-
-### 2.4. Редагування товару (`GET/POST /product/<id>/edit`)
-
-![Редагування товару](screenshots/product_edit.png)
-
-### 2.5. Видалення товару (`POST /product/<id>/delete`)
-
-![Підтвердження видалення товару](screenshots/product_delete_1.png)
-![Відображення підтвердження](screenshots/product_delete_1.png)
+![Структура таблиці posts](screenshots/db_structure.png)
 
 ---
 
-## 3. Модульні тести
+### 3. Інтерфейс користувача та тестування CRUD-операцій
 
-![Результати проходження тестів](screenshots/tests.png)
+#### 3.1. Відображення списку всіх постів (`GET /post`)
+
+![Список публікацій](screenshots/posts_list.png)
+
+#### 3.2. Додавання нового поста (`GET / POST /post/create`)
+
+![Створення нового поста](screenshots/post_create.png)
+
+#### 3.3. Перегляд окремого поста (`GET /post/<id>`)
+
+![Деталі публікації](screenshots/post_detail.png)
+
+#### 3.4. Редагування поста (`GET / POST /post/<id>/update`)
+
+![Редагування публікації](screenshots/post_edit.png)
+
+#### 3.5. Підтвердження та видалення поста (`GET / POST /post/<id>/delete`)
+
+![Підтвердження видалення](screenshots/post_delete.png)
+
+#### 3.6. Flash-повідомлення після операцій
+
+![Flash повідомлення](screenshots/post_flash.png)
+
+#### 3.7. Обробка помилки 404 (`GET /post/99999`)
+
+![Сторінка 404](screenshots/post_404.png)
+
+---
+
+### 4. Модульні тести
+
+![Результати тестів](screenshots/posts_tests.png)
