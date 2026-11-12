@@ -1,0 +1,35 @@
+{% macro render_field(field) %}
+<div class="mb-4">
+    {% if field.type == 'BooleanField' %}
+        <div class="form-check">
+            {{ field(class="form-check-input border-dark border-2", **kwargs) | safe }}
+            {{ field.label(class="form-check-label text-uppercase small fw-bold") }}
+        </div>
+        {% if field.errors %}
+            <ul class="list-group mt-2">
+                {% for error in field.errors %}
+                    <li class="list-group-item list-group-item-danger py-1 px-3 small">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% elif field.type == 'SubmitField' %}
+        {{ field(class="btn btn-dark rounded-0 px-4 py-2 text-uppercase tracking-wider fw-bold", **kwargs) | safe }}
+    {% else %}
+        <dt class="mb-1">{{ field.label(class="form-label text-uppercase small fw-bold mb-0") }}</dt>
+        {% if field.errors %}
+            <dd class="mb-1">
+                {{ field(class="form-control form-control-lg rounded-0 border-danger border-2 is-invalid", **kwargs) | safe }}
+                <ul class="list-group mt-2">
+                    {% for error in field.errors %}
+                        <li class="list-group-item list-group-item-danger py-1 px-3 small">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </dd>
+        {% else %}
+            <dd class="mb-1">
+                {{ field(class="form-control form-control-lg rounded-0 border-dark border-2 fs-6", **kwargs) | safe }}
+            </dd>
+        {% endif %}
+    {% endif %}
+</div>
+{% endmacro %}

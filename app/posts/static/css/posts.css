@@ -1,0 +1,43 @@
+/* Custom styling for posts module */
+.posts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #000;
+    padding-bottom: 1rem;
+}
+
+.post-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid #000;
+}
+
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.post-card-img {
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid #000;
+}
+
+.post-badge {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+.post-meta {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.post-detail-box {
+    border: 2px solid #000;
+    background-color: #fff;
+    padding: 2rem;
+}

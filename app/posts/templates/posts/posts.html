@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('posts.static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="posts-header">
+        <div>
+            <h1 class="display-6 fw-bold text-uppercase mb-1">Posts</h1>
+            <p class="text-muted mb-0">Browse recent publications and articles</p>
+        </div>
+        <div>
+            <a href="{{ url_for('posts.create_post') }}" class="btn btn-dark rounded-0 px-4 py-2 text-uppercase tracking-wider fw-bold">
+                + Add Post
+            </a>
+        </div>
+    </div>
+
+    {% if posts %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for post in posts %}
+                <div class="col">
+                    <div class="card h-100 rounded-0 post-card">
+                        <img src="https://cdn.pixabay.com/photo/2023/06/09/19/37/letter-8052497_1280.png" class="card-img-top rounded-0 post-card-img" alt="Post thumbnail">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-dark rounded-0 post-badge">{{ post.category }}</span>
+                                <small class="text-muted">{{ post.posted.strftime('%Y-%m-%d %H:%M') if post.posted else '' }}</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-uppercase mb-2">{{ post.title }}</h5>
+                            <p class="card-text text-secondary mb-4 flex-grow-1">
+                                {{ post.content[:100] }}{% if post.content|length > 100 %}...{% endif %}
+                            </p>
+                            <div class="mt-auto pt-2 border-top">
+                                <a href="{{ url_for('posts.detail_post', id=post.id) }}" class="btn btn-outline-dark rounded-0 w-100 text-uppercase tracking-wider fw-semibold">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-secondary rounded-0 text-center py-5" role="alert">
+            <h4 class="alert-heading fw-bold">No posts found</h4>
+            <p class="mb-3">Be the first to share something with the community.</p>
+            <a href="{{ url_for('posts.create_post') }}" class="btn btn-dark rounded-0 px-4 py-2 text-uppercase fw-bold">
+                Create First Post
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Post{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('posts.static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-2 border-danger rounded-0 p-4">
+                <h3 class="fw-bold text-danger text-uppercase mb-3">Delete Confirmation</h3>
+                <p class="fs-5 mb-3">
+                    Are you sure you want to delete post <strong>"{{ post.title }}"</strong>?
+                </p>
+                <p class="text-muted small mb-4">
+                    This action cannot be undone.
+                </p>
+
+                <form method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="d-flex gap-3">
+                        <button type="submit" class="btn btn-danger rounded-0 px-4 py-2 text-uppercase fw-bold">
+                            Yes, Delete
+                        </button>
+                        <a href="{{ url_for('posts.detail_post', id=post.id) }}" class="btn btn-outline-dark rounded-0 px-4 py-2 text-uppercase fw-bold">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

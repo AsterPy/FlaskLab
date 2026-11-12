@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% from 'macros/form_macros.html' import render_field %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('posts.static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="mb-3">
+        <a href="{{ url_for('posts.all_posts') }}" class="text-decoration-none text-dark small fw-bold text-uppercase">
+            &larr; Back to all posts
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-2 border-dark rounded-0 p-4">
+                <h2 class="display-6 fw-bold text-uppercase mb-4 border-bottom border-2 border-dark pb-3">
+                    {{ title }}
+                </h2>
+
+                <form method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+
+                    {{ render_field(form.title) }}
+                    {{ render_field(form.category) }}
+                    {{ render_field(form.content, rows=6) }}
+                    {{ render_field(form.publish_date) }}
+                    {{ render_field(form.enabled) }}
+
+                    <div class="d-flex gap-3 mt-4 pt-3 border-top border-dark">
+                        {{ render_field(form.submit) }}
+                        <a href="{{ url_for('posts.all_posts') }}" class="btn btn-outline-dark rounded-0 px-4 py-2 text-uppercase fw-bold">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
