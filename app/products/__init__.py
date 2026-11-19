@@ -12,3 +12,4 @@ products_bp = Blueprint(
 products_bp.teardown_app_request(close_db)
 
 from . import views
+from . import models
