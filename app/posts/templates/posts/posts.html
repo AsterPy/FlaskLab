@@ -35,6 +35,13 @@
                             <p class="card-text text-secondary mb-4 flex-grow-1">
                                 {{ post.content[:100] }}{% if post.content|length > 100 %}...{% endif %}
                             </p>
+                            {% if post.tags %}
+                            <div class="mb-3">
+                                {% for tag in post.tags %}
+                                    <span class="badge bg-light text-dark border me-1">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
                             <div class="mt-auto pt-2 border-top">
                                 <a href="{{ url_for('posts.detail_post', id=post.id) }}" class="btn btn-outline-dark rounded-0 w-100 text-uppercase tracking-wider fw-semibold">
                                     Read More

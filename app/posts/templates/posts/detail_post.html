@@ -19,7 +19,7 @@
             <div>
                 <span class="badge bg-dark rounded-0 post-badge me-2">{{ post.category }}</span>
                 <span class="text-muted small">
-                    Posted on {{ post.posted.strftime('%Y-%m-%d %H:%M') if post.posted else '' }} by <strong>{{ post.author }}</strong>
+                    Posted on {{ post.posted.strftime('%Y-%m-%d %H:%M') if post.posted else '' }}
                 </span>
             </div>
             <div class="d-flex gap-2 mt-2 mt-md-0">
@@ -32,10 +32,31 @@
             </div>
         </div>
 
-        <h1 class="display-5 fw-bold text-uppercase mb-4">{{ post.title }}</h1>
+        <div class="text-center mb-4">
+            <img src="https://cdn.pixabay.com/photo/2023/06/09/19/37/letter-8052497_1280.png" class="img-fluid rounded-0" style="max-height: 280px; object-fit: contain;" alt="Illustration">
+        </div>
 
-        <div class="post-content fs-5 lh-lg mb-5" style="white-space: pre-wrap;">
+        <h1 class="display-6 fw-bold text-uppercase mb-2" style="color: #d97706;">{{ post.title }}</h1>
+        <p class="text-muted mb-3"><strong>Post ID:</strong> {{ post.id }}</p>
+
+        <div class="post-content fs-5 lh-lg mb-4" style="white-space: pre-wrap;">
 {{ post.content }}
+        </div>
+
+        <div class="border-top pt-3">
+            <p class="mb-1"><strong>Category:</strong> {{ post.category }}</p>
+            <p class="mb-1"><strong>Author:</strong> {{ post.user if post.user else 'Anonymous' }}</p>
+            <p class="mb-1"><strong>Дата публікації:</strong> {{ post.posted.strftime('%Y-%m-%d %H:%M:%S') if post.posted else '' }}</p>
+            <p class="mb-2">
+                <strong>Tags:</strong>
+                {% if post.tags %}
+                    {% for tag in post.tags %}
+                        <span class="fw-semibold text-warning" style="color: #d97706 !important;">{{ tag.name }}</span> /
+                    {% endfor %}
+                {% else %}
+                    <span class="text-muted">None</span>
+                {% endif %}
+            </p>
         </div>
     </div>
 </div>

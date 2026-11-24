@@ -26,9 +26,11 @@
                     {{ form.hidden_tag() }}
 
                     {{ render_field(form.title) }}
-                    {{ render_field(form.category) }}
-                    {{ render_field(form.content, rows=6) }}
+                    {{ render_field(form.content, rows=5) }}
                     {{ render_field(form.publish_date) }}
+                    {{ render_field(form.category) }}
+                    {{ render_field(form.author_id) }}
+                    {{ render_field(form.tags) }}
                     {{ render_field(form.enabled) }}
 
                     <div class="d-flex gap-3 mt-4 pt-3 border-top border-dark">

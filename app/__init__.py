@@ -30,7 +30,7 @@ def create_app(config_name=None):
     app.config.from_object(config.get(config_name, config["default"]))
 
     db.init_app(app)
-    migrate.init_app(app, db)
+    migrate.init_app(app, db, render_as_batch=True)
     csrf.init_app(app)
 
     @app.errorhandler(404)

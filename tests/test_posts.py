@@ -163,6 +163,48 @@ class PostCRUDTestCase(unittest.TestCase):
         deleted = db.session.get(Post, post_id)
         self.assertIsNone(deleted)
 
+    def test_lab8_relationships(self):
+        """Lab 8: One-to-Many (User-Post) and Many-to-Many (Post-Tag) relationships."""
+        from app.users.models import User
+        from app.posts.models import Tag
+
+        # Create user
+        u1 = User(username="author1", email="author1@ex.com", password="pwd")
+        u2 = User(username="author2", email="author2@ex.com", password="pwd")
+        t1 = Tag(name="Tech")
+        t2 = Tag(name="Python")
+        db.session.add_all([u1, u2, t1, t2])
+        db.session.commit()
+
+        # Create post via client with author_id and tags
+        post_data = {
+            "title": "Lab 8 Relationship Post",
+            "content": "Testing relations with author and tags.",
+            "category": "tech",
+            "author_id": u1.id,
+            "tags": [t1.id, t2.id],
+            "enabled": True
+        }
+        res = self.client.post("/post/create", data=post_data, follow_redirects=True)
+        self.assertEqual(res.status_code, 200)
+
+        # Verify post, user, and tags
+        created = db.session.scalar(db.select(Post).where(Post.title == "Lab 8 Relationship Post"))
+        self.assertIsNotNone(created)
+        self.assertEqual(created.user_id, u1.id)
+        self.assertEqual(created.user.username, "author1")
+        self.assertIn(created, u1.posts)
+        self.assertEqual(len(created.tags), 2)
+        self.assertIn(created, t1.posts)
+        self.assertIn(created, t2.posts)
+
+        # Verify detail page renders author and tags
+        detail_res = self.client.get(f"/post/{created.id}")
+        self.assertEqual(detail_res.status_code, 200)
+        self.assertIn("author1@ex.com".encode("utf-8"), detail_res.data)
+        self.assertIn("Tech".encode("utf-8"), detail_res.data)
+        self.assertIn("Python".encode("utf-8"), detail_res.data)
+
     def test_404_not_found(self):
         """US06: 404 помилка при запиті неіснуючого поста (GET /post/9999)."""
         response = self.client.get("/post/99999")

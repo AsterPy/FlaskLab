@@ -33,3 +33,27 @@
 2026-11-04 21:58:50,089 - WARNING - Contact form validation failed: {'name': ['Довжина імені повинна бути від 4 до 10 символів']}
 2026-11-04 21:58:50,091 - WARNING - Contact form validation failed: {'phone': ['Номер телефону повинен бути у форматі +380XXXXXXXXX']}
 2026-11-04 21:58:50,093 - INFO - Contact form submitted: name='Alex', email='alex@example.com', phone='+380501234567', subject='collaboration', message='Доброго дня! Пропоную співпрацю у спільному проєкті.'
+2026-11-24 17:19:54,904 - WARNING - Contact form validation failed: {'name': ['Довжина імені повинна бути від 4 до 10 символів']}
+2026-11-24 17:19:54,906 - WARNING - Contact form validation failed: {'phone': ['Номер телефону повинен бути у форматі +380XXXXXXXXX']}
+2026-11-24 17:19:54,907 - INFO - Contact form submitted: name='Alex', email='alex@example.com', phone='+380501234567', subject='collaboration', message='Доброго дня! Пропоную співпрацю у спільному проєкті.'
+2026-11-24 17:23:43,049 - WARNING - Contact form validation failed: {'name': ['Довжина імені повинна бути від 4 до 10 символів']}
+2026-11-24 17:23:43,050 - WARNING - Contact form validation failed: {'phone': ['Номер телефону повинен бути у форматі +380XXXXXXXXX']}
+2026-11-24 17:23:43,051 - INFO - Contact form submitted: name='Alex', email='alex@example.com', phone='+380501234567', subject='collaboration', message='Доброго дня! Пропоную співпрацю у спільному проєкті.'
+2026-11-24 17:23:58,511 - WARNING - Contact form validation failed: {'name': ['Довжина імені повинна бути від 4 до 10 символів']}
+2026-11-24 17:23:58,513 - WARNING - Contact form validation failed: {'phone': ['Номер телефону повинен бути у форматі +380XXXXXXXXX']}
+2026-11-24 17:23:58,514 - INFO - Contact form submitted: name='Alex', email='alex@example.com', phone='+380501234567', subject='collaboration', message='Доброго дня! Пропоную співпрацю у спільному проєкті.'
+2026-11-24 17:24:10,156 - WARNING - Contact form validation failed: {'name': ['Довжина імені повинна бути від 4 до 10 символів']}
+2026-11-24 17:24:10,158 - WARNING - Contact form validation failed: {'phone': ['Номер телефону повинен бути у форматі +380XXXXXXXXX']}
+2026-11-24 17:24:10,159 - INFO - Contact form submitted: name='Alex', email='alex@example.com', phone='+380501234567', subject='collaboration', message='Доброго дня! Пропоную співпрацю у спільному проєкті.'
+2026-11-24 17:24:24,739 - WARNING - Contact form validation failed: {'name': ['Довжина імені повинна бути від 4 до 10 символів']}
+2026-11-24 17:24:24,741 - WARNING - Contact form validation failed: {'phone': ['Номер телефону повинен бути у форматі +380XXXXXXXXX']}
+2026-11-24 17:24:24,742 - INFO - Contact form submitted: name='Alex', email='alex@example.com', phone='+380501234567', subject='collaboration', message='Доброго дня! Пропоную співпрацю у спільному проєкті.'
+2026-11-24 17:24:42,686 - WARNING - Contact form validation failed: {'name': ['Довжина імені повинна бути від 4 до 10 символів']}
+2026-11-24 17:24:42,687 - WARNING - Contact form validation failed: {'phone': ['Номер телефону повинен бути у форматі +380XXXXXXXXX']}
+2026-11-24 17:24:42,688 - INFO - Contact form submitted: name='Alex', email='alex@example.com', phone='+380501234567', subject='collaboration', message='Доброго дня! Пропоную співпрацю у спільному проєкті.'
+2026-11-24 17:25:26,829 - WARNING - Contact form validation failed: {'name': ['Довжина імені повинна бути від 4 до 10 символів']}
+2026-11-24 17:25:26,831 - WARNING - Contact form validation failed: {'phone': ['Номер телефону повинен бути у форматі +380XXXXXXXXX']}
+2026-11-24 17:25:26,832 - INFO - Contact form submitted: name='Alex', email='alex@example.com', phone='+380501234567', subject='collaboration', message='Доброго дня! Пропоную співпрацю у спільному проєкті.'
+2026-11-24 19:11:33,650 - WARNING - Contact form validation failed: {'name': ['Довжина імені повинна бути від 4 до 10 символів']}
+2026-11-24 19:11:33,652 - WARNING - Contact form validation failed: {'phone': ['Номер телефону повинен бути у форматі +380XXXXXXXXX']}
+2026-11-24 19:11:33,653 - INFO - Contact form submitted: name='Alex', email='alex@example.com', phone='+380501234567', subject='collaboration', message='Доброго дня! Пропоную співпрацю у спільному проєкті.'
