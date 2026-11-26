@@ -1,13 +1,13 @@
-from flask import request, redirect, url_for, render_template, flash, session, make_response
+from flask import request, redirect, url_for, render_template, flash, make_response
+from flask_login import login_user, logout_user, current_user, login_required
+from sqlalchemy import select
+from app import db
 from . import users_bp
-
-VALID_USERS = {
-    "admin": "12345",
-    "user": "password"
-}
+from .models import User
+from .forms import RegistrationForm, LoginForm
 
 
-@users_bp.route("/hi/<string:name>")  
+@users_bp.route("/hi/<string:name>")
 def greetings(name):
     name = name.upper()
     age = request.args.get("age", None, int)
@@ -16,7 +16,7 @@ def greetings(name):
         "hi.html",
         title="Greetings",
         name=name,
-        age=age
+        age=age,
     )
 
 
@@ -27,29 +27,61 @@ def admin():
     return redirect(to_url)
 
 
+@users_bp.route("/register", methods=["GET", "POST"])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for("users.account"))
+
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(
+            username=form.username.data,
+            email=form.email.data,
+            password=form.password.data,
+        )
+        user.hash_password()
+        db.session.add(user)
+        db.session.commit()
+        flash(f"Account created for {form.username.data}!", "success")
+        return redirect(url_for("users.login"))
+
+    return render_template("register.html", form=form, title="Register")
+
+
 @users_bp.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST":
-        username = request.form.get("username", "").strip()
-        password = request.form.get("password", "")
+    if current_user.is_authenticated:
+        return redirect(url_for("users.account"))
 
-        if username in VALID_USERS and VALID_USERS[username] == password:
-            session["username"] = username
-            flash("Ви успішно увійшли в систему!", "success")
-            return redirect(url_for("users.profile"))
-        else:
-            flash("Невірне ім'я користувача або пароль!", "danger")
-            return redirect(url_for("users.login"))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = db.session.scalar(select(User).where(User.email == form.email.data))
+        if user and user.check_password(form.password.data):
+            login_user(user, remember=form.remember.data)
+            flash("You have been logged in!", "success")
+            return redirect(url_for("users.account"))
+        flash("Invalid email or password.", "danger")
 
-    return render_template("login.html", title="Login")
+    return render_template("login.html", form=form, title="Login")
+
+
+@users_bp.route("/account")
+@login_required
+def account():
+    return render_template("account.html", title="Account", user=current_user)
+
+
+@users_bp.route("/")
+@login_required
+def all_users():
+    users = db.session.scalars(select(User).order_by(User.id)).all()
+    return render_template("users.html", title="Users List", users=users)
 
 
 @users_bp.route("/profile", methods=["GET", "POST"])
+@login_required
 def profile():
-    username = session.get("username")
-    if not username:
-        flash("Будь ласка, увійдіть у систему для перегляду профілю.", "danger")
-        return redirect(url_for("users.login"))
+    username = current_user.username
 
     if request.method == "POST":
         action = request.form.get("action")
@@ -92,6 +124,7 @@ def profile():
 
 
 @users_bp.route("/set-theme/<string:theme>")
+@login_required
 def set_theme(theme):
     if theme not in ("light", "dark"):
         theme = "light"
@@ -103,8 +136,6 @@ def set_theme(theme):
 
 @users_bp.route("/logout", methods=["GET", "POST"])
 def logout():
-    session.pop("username", None)
-    flash("Ви вийшли з системи.", "info")
+    logout_user()
+    flash("You have successfully logged out.", "info")
     return redirect(url_for("users.login"))
-
-
